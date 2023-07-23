@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import HomePage from './HomePage';
 import AboutPage from './AboutPage';
 import ContactPage from './ContactPage';
-import './styles.css'; // Import the styles
+import '../styles/styles.css'; // Import the styles
 import Head from './Head';
 
 const App = () => {
