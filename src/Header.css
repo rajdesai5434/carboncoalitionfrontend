@@ -1,0 +1,18 @@
+/* Header.css */
+
+.header-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #333;
+    color: #fff;
+    height: 80px; /* Set the desired height for your header */
+  }
+  
+  .website-name {
+    font-size: 2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    /* Add more styles to beautify the text */
+  }
+  
