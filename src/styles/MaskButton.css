@@ -1,10 +1,15 @@
 /* ButtonComponent.css */
 
 .button-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 10vh
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
   }
   
   .custom-button {

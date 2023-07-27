@@ -1,11 +1,15 @@
-import React,{useState} from 'react';
+import React,{useState,useEffect} from 'react';
 import '../styles/MaskButton.css';
-const ethers = require("ethers")
 
 const ConnectWallet = () => {
     
     const [connected, setConnected] = useState(false);
     const [account, setAccount] = useState('');
+
+    useEffect(() => {
+      connectToMetaMask();
+    }, []);
+
     // Function to connect to MetaMask
     const connectToMetaMask = async () => {
         try {
@@ -25,8 +29,8 @@ const ConnectWallet = () => {
 
     return (
         <div className='button-container'>
-            {connected ? (<p className="custom-text">Connected with account: {account}</p>) 
-                        : (<button className="custom-button" onClick={connectToMetaMask}>Connect To Metatmask</button>)}
+            {connected ? (<p className="custom-text"></p>) 
+                        : (<button className="custom-button" onClick={connectToMetaMask}>Metatmask</button>)}
         </div>
   );
   };

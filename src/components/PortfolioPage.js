@@ -1,11 +1,19 @@
-// PortfolioPage.js
-import React from 'react';
+import React, { useState, useEffect } from "react";
+import WalletTokens from "./WalletTokens";
+import CarbonBank from "./CarbonBank";
 
 const PortfolioPage = () => {
   return (
     <div>
-      <h1>PortfolioPage</h1>
-      <p>This is the Home page of the beautiful app.</p>
+      <div>
+        <WalletTokens/>
+      </div>
+      <div>
+        <CarbonBank/>
+      </div>
+      <div>
+        <h3>Carbon Credits purchased through deposits</h3>
+      </div>
     </div>
   );
 };
