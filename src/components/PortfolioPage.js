@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import WalletTokens from "./WalletTokens";
 import CarbonBank from "./CarbonBank";
+import Deposit from "./Deposit"
+import Withdraw from "./Withdraw";
 
 const PortfolioPage = () => {
   return (
@@ -12,7 +14,10 @@ const PortfolioPage = () => {
         <CarbonBank/>
       </div>
       <div>
-        <h3>Carbon Credits purchased through deposits</h3>
+        <Deposit/>
+      </div>
+      <div>
+        <Withdraw/>
       </div>
     </div>
   );
