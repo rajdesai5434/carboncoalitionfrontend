@@ -24,7 +24,7 @@ const SimpleInt = () => {
     const CO2 = simpleInterest * 0.67
     setCO2(CO2);
 
-    const espresso = 0.09 * CO2 * 1000
+    const espresso = 0.09 * CO2 * 1000/t
     setESP(espresso);
   };
 
@@ -40,7 +40,7 @@ const SimpleInt = () => {
         />
       </div>
       <div className="input-group">
-        <label>Time (per week):</label>
+        <label>Time (weeks):</label>
         <input
           type="text"
           value={time}
@@ -51,8 +51,8 @@ const SimpleInt = () => {
       {result !== null && (
         <div className="result">
           <p>Interest Earned: {result.toFixed(2)} pounds</p>
-          <p> &#x1F4A8; CO2 removed from environment: {CO2.toFixed(2)} tons</p>
-          <p>Carbon removed for {espresso.toFixed(2)} espresso/week</p>
+          <p> &#x1F4A8; Carbon removed from environment: {CO2.toFixed(2)} tons</p>
+          <p> Carbon removed equivalent to {espresso.toFixed(2)} &#x2615;/week</p>
         </div>
       )}
     </div>

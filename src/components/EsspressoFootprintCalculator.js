@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const CarbonFootprintCalculator = () => {
+const EsspressoFootprintCalculator = () => {
   const [quantity, setQuantity] = useState(0);
   const [caffine, setCaffine] = useState(151.6);
   const [water, setWater] = useState(140);
@@ -26,7 +26,7 @@ const CarbonFootprintCalculator = () => {
 
   return (
     <div>
-      <h2>Carbon Footprint Calculator</h2>
+      <h2>Esspresso Footprint Calculator</h2>
       <label>
       Espesso/week:
         <input type="number" value={quantity} onChange={(e) => setQuantity(e.target.value)} />
@@ -48,4 +48,4 @@ const CarbonFootprintCalculator = () => {
   );
 };
 
-export default CarbonFootprintCalculator;
+export default EsspressoFootprintCalculator;

@@ -1,7 +1,7 @@
 // CalculatorPage.js
 import React from 'react';
 import SimpleInt from './SimpleInt';
-import CarbonFootprintCalculator from './CarbonFootprintCalculator';
+import EsspressoFootprintCalculator from './EsspressoFootprintCalculator';
 
 const CalculatorPage = () => {
   return (
@@ -11,7 +11,7 @@ const CalculatorPage = () => {
         <SimpleInt/>
       </div>
       <div>
-        <CarbonFootprintCalculator/>
+        <EsspressoFootprintCalculator/>
       </div>
     </div>
   );
