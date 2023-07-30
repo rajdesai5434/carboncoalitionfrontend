@@ -1,4 +1,12 @@
 import React, { useState } from 'react';
+import { Button, Form, Input, Select } from 'antd';
+
+const onFinish = (values) => {
+  console.log('Success:', values);
+};
+const onFinishFailed = (errorInfo) => {
+  console.log('Failed:', errorInfo);
+};
 
 const SimpleInt = () => {
   const [principal, setPrincipal] = useState('');
@@ -29,7 +37,73 @@ const SimpleInt = () => {
   };
 
   return (
-    <div className="calculator-box">
+    <>
+    <h2>Carbon Credits Purchased</h2>
+    <Form
+    name="basic"
+    labelCol={{
+      span: 8,
+    }}
+    wrapperCol={{
+      span: 16,
+    }}
+    style={{
+      maxWidth: 600,
+    }}
+    initialValues={{
+      remember: true,
+    }}
+    onFinish={onFinish}
+    onFinishFailed={onFinishFailed}
+    autoComplete="off"
+  >
+    <Form.Item
+      label="Principle"
+      name="principle"
+      onChange={(e) => setPrincipal(e.target.value)}
+      rules={[
+        {
+          required: true,
+          message: 'Please input your principle!',
+        },
+      ]}
+    >
+      <Input />
+    </Form.Item>
+
+    <Form.Item
+      label="Time"
+      name="time"
+      onChange={(e) => setTime(e.target.value)}
+      rules={[
+        {
+          required: true,
+          message: 'Please input your time in weeks!',
+        },
+      ]}
+    >
+      <Input />
+    </Form.Item>
+
+    <Form.Item
+      wrapperCol={{
+        offset: 8,
+        span: 16,
+      }}
+    >
+      <Button type="primary" htmlType="submit" onClick={calculateInterest}>
+        Submit
+      </Button>
+    </Form.Item>
+  </Form>
+  {result !== null && (
+        <div className="result">
+          <p>Interest Earned: {result.toFixed(2)} pounds</p>
+          <p> &#x1F4A8; Carbon removed from environment: {CO2.toFixed(2)} tons</p>
+          <p> Carbon removed equivalent to {espresso.toFixed(2)} &#x2615;/week</p>
+        </div>
+      )}
+    {/* <div className="calculator-box">
       <h2>Carbon Credits Purchased</h2>
       <div className="input-group">
         <label>Principal:</label>
@@ -55,7 +129,8 @@ const SimpleInt = () => {
           <p> Carbon removed equivalent to {espresso.toFixed(2)} &#x2615;/week</p>
         </div>
       )}
-    </div>
+    </div> */}
+    </>
   );
 };
 

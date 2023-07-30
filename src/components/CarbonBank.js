@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { ethers } from 'ethers';
 import TokenTable from "./TokenTable";
+import { Divider } from 'antd';
 
 const CarbonBank = () => {
     const [ tokens, setTokens ] = useState([]);
@@ -520,7 +521,7 @@ const CarbonBank = () => {
         const tokenBalances = await Promise.all(
             tokenAddresses.map(async (address) => {
             const balance = await contract.userAccBalContract(acc,address);
-            return { name:tokenNames.get(address), address, balance: balance.toString() };
+            return { key:address, name:tokenNames.get(address), balance: balance.toString() };
             })
         );
 
@@ -530,7 +531,7 @@ const CarbonBank = () => {
     return (
     <div>
         <div>
-          <h2>Bank Balance (Contract: {contractAddress})</h2>
+        <Divider orientation="center" style={{fontSize:20,fontWeight:"bold"}} plain>Bank Balance</Divider>
           <TokenTable tokens={tokens}/>
         </div>
     </div>
