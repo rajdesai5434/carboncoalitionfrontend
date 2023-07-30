@@ -1,15 +1,28 @@
 import React, { useState } from 'react';
 import { ethers } from 'ethers';
 import '../styles/Deposit.css';
+import { Button, Checkbox, Form, Input } from 'antd';
+import {Player} from "@lottiefiles/react-lottie-player";
+import LoadingAnimation from "../assets/cat.json";
+
+
+// const onFinish = (values) => {
+//   console.log('Success:', values);
+// };
+// const onFinishFailed = (errorInfo) => {
+//   console.log('Failed:', errorInfo);
+// };
 
 const Deposit = () => {
   // State to hold token address and amount
   const [tokenAddress, setTokenAddress] = useState('');
   const [amount, setAmount] = useState('');
+  const [cat, setCat] = useState(1);
 
   // Function to handle deposit
   const handleDeposit = async () => {
     try {
+        setCat(null);
         if (!ethers.utils.isAddress(tokenAddress) || isNaN(amount)) {
             console.error('Invalid token address or amount');
             return;
@@ -531,9 +544,11 @@ const Deposit = () => {
         // Wait for the transaction to be confirmed
         await tx.wait();
 
+
         // Clear form inputs after successful deposit
         setTokenAddress('');
         setAmount('');
+        setCat(1);
         console.log('Deposit successful');
     } catch (error) {
     console.error('Error during deposit:', error);
@@ -541,6 +556,8 @@ const Deposit = () => {
   };
 
   return (
+    <div>
+    {cat == 1 ?
     <div className="form-container">
       <h2>Bank Deposit</h2>
       <form
@@ -568,6 +585,16 @@ const Deposit = () => {
         <button type="submit">Deposit</button>
       </form>
     </div>
+    :
+    <div>
+        <Player
+          autoplay
+          loop
+          src={LoadingAnimation}
+          style={{ height: "300px", width: "300px", marginTop: "12rem" }}
+        />
+      </div>}
+      </div>
   );
 };
 
