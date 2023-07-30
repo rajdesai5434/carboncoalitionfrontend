@@ -4,6 +4,7 @@ import '../styles/Deposit.css';
 import { Button, Checkbox, Form, Input } from 'antd';
 import {Player} from "@lottiefiles/react-lottie-player";
 import LoadingAnimation from "../assets/cat.json";
+import { Divider } from 'antd';
 
 
 // const onFinish = (values) => {
@@ -559,7 +560,7 @@ const Deposit = () => {
     <div>
     {cat == 1 ?
     <div className="form-container">
-      <h2>Bank Deposit</h2>
+      <Divider orientation="center" style={{fontSize:20,fontWeight:"bold"}} plain>Bank Deposit</Divider>
       <form
         onSubmit={(e) => {
           e.preventDefault();

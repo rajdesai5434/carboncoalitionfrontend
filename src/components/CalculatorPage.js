@@ -7,10 +7,9 @@ import { Col, Row } from 'antd';
 const CalculatorPage = () => {
   return (
     <div>
-      <h1>CalculatorPage</h1>
       <Row>
-        <Col span={12}><SimpleInt/></Col>
-        <Col span={12}><EsspressoFootprintCalculator/></Col>
+        <Col span={12} style={{ padding: '50px' }}><SimpleInt/></Col>
+        <Col span={12} style={{ padding: '50px' }}><EsspressoFootprintCalculator/></Col>
       </Row>
     </div>
   );

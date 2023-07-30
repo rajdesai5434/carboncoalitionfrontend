@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { Button, Form, Input, Select } from 'antd';
+import { Col, Row } from 'antd';
+import { Divider } from 'antd';
 
 const onFinish = (values) => {
   console.log('Success:', values);
@@ -38,7 +40,7 @@ const SimpleInt = () => {
 
   return (
     <>
-    <h2>Carbon Credits Purchased</h2>
+    <Divider orientation="center" style={{fontSize:20,fontWeight:"bold"}} plain>Carbon Credits Purchased</Divider>
     <Form
     name="basic"
     labelCol={{
@@ -91,45 +93,16 @@ const SimpleInt = () => {
         span: 16,
       }}
     >
-      <Button type="primary" htmlType="submit" onClick={calculateInterest}>
-        Submit
-      </Button>
+      <button type="submit" onClick={calculateInterest}>Submit</button>
     </Form.Item>
   </Form>
   {result !== null && (
-        <div className="result">
-          <p>Interest Earned: {result.toFixed(2)} pounds</p>
-          <p> &#x1F4A8; Carbon removed from environment: {CO2.toFixed(2)} tons</p>
-          <p> Carbon removed equivalent to {espresso.toFixed(2)} &#x2615;/week</p>
+        <div>
+        <Col span={20} offset={6}> 💰 {result.toFixed(2)} pounds interest will be earned </Col>
+        <Col span={20} offset={6}> &#x1F4A8; {CO2.toFixed(2)} tons of carbon removed from environment </Col>
+        <Col span={20} offset={6}> &#x2615; {espresso.toFixed(2)}/week will be carbon free</Col>
         </div>
       )}
-    {/* <div className="calculator-box">
-      <h2>Carbon Credits Purchased</h2>
-      <div className="input-group">
-        <label>Principal:</label>
-        <input
-          type="text"
-          value={principal}
-          onChange={(e) => setPrincipal(e.target.value)}
-        />
-      </div>
-      <div className="input-group">
-        <label>Time (weeks):</label>
-        <input
-          type="text"
-          value={time}
-          onChange={(e) => setTime(e.target.value)}
-        />
-      </div>
-      <button onClick={calculateInterest}>Calculate</button>
-      {result !== null && (
-        <div className="result">
-          <p>Interest Earned: {result.toFixed(2)} pounds</p>
-          <p> &#x1F4A8; Carbon removed from environment: {CO2.toFixed(2)} tons</p>
-          <p> Carbon removed equivalent to {espresso.toFixed(2)} &#x2615;/week</p>
-        </div>
-      )}
-    </div> */}
     </>
   );
 };

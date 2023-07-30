@@ -8,11 +8,11 @@ import { Col, Row } from 'antd';
 const PortfolioPage = () => {
   return (
     <div>
-      <Row>
+      <Row gutter={[16, 8]}>
         <Col span={12} style={{ padding: '50px' }}><WalletTokens/></Col>
         <Col span={12} style={{ padding: '50px' }}><CarbonBank /></Col>
       </Row>
-      <Row>
+      <Row gutter={[16, 8]}>
         <Col span={12} style={{ padding: '50px' }}><Deposit/></Col>
         <Col span={12} style={{ padding: '50px' }}><Withdraw/></Col>
       </Row>

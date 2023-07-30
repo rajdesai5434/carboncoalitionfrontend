@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { ethers } from 'ethers';
 import '../styles/Deposit.css';
+import { Divider } from 'antd';
 
 const Withdraw = () => {
   // State to hold token address and amount
@@ -542,7 +543,7 @@ const Withdraw = () => {
 
   return (
     <div className="form-container">
-      <h2>Bank Withdrawal</h2>
+      <Divider orientation="center" style={{fontSize:20,fontWeight:"bold"}} plain>Bank Withdraw</Divider>
       <form
         onSubmit={(e) => {
           e.preventDefault();

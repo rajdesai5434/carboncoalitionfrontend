@@ -29,7 +29,7 @@ const ConnectWallet = () => {
 
     return (
         <div className='button-container'>
-            {connected ? (<p className="custom-text"></p>) 
+            {connected ? (<p className="custom-text">{account}</p>) 
                         : (<button className="custom-button" onClick={connectToMetaMask}>Metatmask</button>)}
         </div>
   );
