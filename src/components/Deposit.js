@@ -33,7 +33,7 @@ const Deposit = () => {
         const provider = new ethers.providers.Web3Provider(window.ethereum);
 
         //Contract Details
-        const contractAddress = '0x4a8bedb99b046d4b32D5E213B9e4fca94a192E77';
+        const contractAddress = '0x7c24395B531563B51cDEA7989B1317236071Ea59';
         const contractABI = [
         {
             "inputs": [],

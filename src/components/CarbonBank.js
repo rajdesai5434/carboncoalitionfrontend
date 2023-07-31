@@ -5,7 +5,7 @@ import { Divider } from 'antd';
 
 const CarbonBank = () => {
     const [ tokens, setTokens ] = useState([]);
-    const [ contractAddress ] = useState("0x4a8bedb99b046d4b32D5E213B9e4fca94a192E77")
+    const [ contractAddress ] = useState("0x7c24395B531563B51cDEA7989B1317236071Ea59")
 
     useEffect(() => {
         loadBlockchainData();

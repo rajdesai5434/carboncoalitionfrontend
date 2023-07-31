@@ -2,25 +2,30 @@ import React, { useState } from 'react';
 import { ethers } from 'ethers';
 import '../styles/Deposit.css';
 import { Divider } from 'antd';
+import {Player} from "@lottiefiles/react-lottie-player";
+import LoadingAnimation from "../assets/cat.json";
 
 const Withdraw = () => {
   // State to hold token address and amount
   const [tokenAddress, setTokenAddress] = useState('');
-  const [amount, setAmount] = useState('');
+  const [cat, setCat] = useState(1);
 
   // Function to handle deposit
-  const handleDeposit = async () => {
+  const handleWithdraw = async () => {
     try {
-        if (!ethers.utils.isAddress(tokenAddress) || isNaN(amount)) {
+        setCat(null);
+        if (!ethers.utils.isAddress(tokenAddress)) {
             console.error('Invalid token address or amount');
             return;
         }
+
+        const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
 
         // Connect to the Ethereum provider (e.g., MetaMask)
         const provider = new ethers.providers.Web3Provider(window.ethereum);
 
         //Contract Details
-        const contractAddress = '0x4a8bedb99b046d4b32D5E213B9e4fca94a192E77';
+        const contractAddress = '0x7c24395B531563B51cDEA7989B1317236071Ea59';
         const contractABI = [
         {
             "inputs": [],
@@ -509,45 +514,44 @@ const Withdraw = () => {
         }]
         const contract = new ethers.Contract(contractAddress, contractABI, provider.getSigner());
 
-
-
         //Coin Details
+        //const coinAddress = '0xD087ff96281dcf722AEa82aCA57E8545EA9e6C96'
         const coinABI = [{"inputs":[{"internalType":"string","name":"name","type":"string"},{"internalType":"string","name":"symbol","type":"string"},{"internalType":"uint8","name":"decimals","type":"uint8"},{"internalType":"address","name":"owner","type":"address"}],"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"owner","type":"address"},{"indexed":true,"internalType":"address","name":"spender","type":"address"},{"indexed":false,"internalType":"uint256","name":"value","type":"uint256"}],"name":"Approval","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"previousOwner","type":"address"},{"indexed":true,"internalType":"address","name":"newOwner","type":"address"}],"name":"OwnershipTransferred","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"from","type":"address"},{"indexed":true,"internalType":"address","name":"to","type":"address"},{"indexed":false,"internalType":"uint256","name":"value","type":"uint256"}],"name":"Transfer","type":"event"},{"inputs":[],"name":"DOMAIN_SEPARATOR","outputs":[{"internalType":"bytes32","name":"","type":"bytes32"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"EIP712_REVISION","outputs":[{"internalType":"bytes","name":"","type":"bytes"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"PERMIT_TYPEHASH","outputs":[{"internalType":"bytes32","name":"","type":"bytes32"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"owner","type":"address"},{"internalType":"address","name":"spender","type":"address"}],"name":"allowance","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"spender","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"approve","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"account","type":"address"}],"name":"balanceOf","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"decimals","outputs":[{"internalType":"uint8","name":"","type":"uint8"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"spender","type":"address"},{"internalType":"uint256","name":"subtractedValue","type":"uint256"}],"name":"decreaseAllowance","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"spender","type":"address"},{"internalType":"uint256","name":"addedValue","type":"uint256"}],"name":"increaseAllowance","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"account","type":"address"},{"internalType":"uint256","name":"value","type":"uint256"}],"name":"mint","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"value","type":"uint256"}],"name":"mint","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"name","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"owner","type":"address"}],"name":"nonces","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"owner","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"owner","type":"address"},{"internalType":"address","name":"spender","type":"address"},{"internalType":"uint256","name":"value","type":"uint256"},{"internalType":"uint256","name":"deadline","type":"uint256"},{"internalType":"uint8","name":"v","type":"uint8"},{"internalType":"bytes32","name":"r","type":"bytes32"},{"internalType":"bytes32","name":"s","type":"bytes32"}],"name":"permit","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"renounceOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"symbol","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"totalSupply","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"recipient","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"transfer","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"sender","type":"address"},{"internalType":"address","name":"recipient","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"transferFrom","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"newOwner","type":"address"}],"name":"transferOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"}];
-        const coinContract = new ethers.Contract(tokenAddress, coinABI, provider.getSigner());
-
-        console.log(ethers.utils.parseEther(amount));
-        
-        const approve1 = await coinContract.approve(contractAddress,ethers.utils.parseEther(amount),{gasPrice:gasPrice,gasLimit: 500000});
-        await approve1.wait();
-        console.log("Approval hash to send coins to contract: ", approve1.hash);
-
-
+        //const coinContract = new ethers.Contract(tokenAddress, coinABI, provider.getSigner());
 
         const fee = await provider.getFeeData();
         const gasPrice = fee['gasPrice'];
 
+        //amount to withdraw
+        const amount = await contract.userAccBalContract(accounts[0],tokenAddress);
+        console.log(Number(amount));
+
         // Perform the contract function call (assuming your contract has a 'deposit' function)
-        const tx = await contract.depositToContract(ethers.utils.parseEther(amount),tokenAddress,{gasPrice:gasPrice,gasLimit: 500000});
+        const tx = await contract.withdrawFromContract(amount,tokenAddress,{gasPrice:gasPrice,gasLimit: 500000});
+        console.log(tx.hash);
 
         // Wait for the transaction to be confirmed
         await tx.wait();
 
         // Clear form inputs after successful deposit
         setTokenAddress('');
-        setAmount('');
-        console.log('Deposit successful');
+        setCat(1);
+
+        console.log('Withdraw successful');
     } catch (error) {
     console.error('Error during deposit:', error);
     }
   };
 
   return (
+    <div>
+    {cat == 1 ?
     <div className="form-container">
       <Divider orientation="center" style={{fontSize:20,fontWeight:"bold"}} plain>Bank Withdraw</Divider>
       <form
         onSubmit={(e) => {
           e.preventDefault();
-          handleDeposit();
+          handleWithdraw();
         }}
       >
         <div className="form-group">
@@ -558,16 +562,18 @@ const Withdraw = () => {
             onChange={(e) => setTokenAddress(e.target.value)}
           />
         </div>
-        <div className="form-group">
-          <label>Amount:</label>
-          <input
-            type="text"
-            value={amount}
-            onChange={(e) => setAmount(e.target.value)}
-          />
-        </div>
         <button type="submit">Withdraw</button>
       </form>
+    </div>
+    :
+    <div>
+        <Player
+          autoplay
+          loop
+          src={LoadingAnimation}
+          style={{ height: "300px", width: "300px", marginTop: "12rem" }}
+        />
+      </div>}
     </div>
   );
 };
